@@ -42,7 +42,29 @@ public class HuffmanTree
 			}
 		}
 		PriorityQueue<Tree> trees = new PriorityQueue<Tree>();
-		//ArrayList<Tree> trees = new ArrayList<Tree>();
+		for(int i = 0; i < nodes.size(); i++)
+		{
+			Tree t = new Tree();
+			t.root = nodes.get(i);
+			t.weight = t.root.frequency;
+			trees.add(t);
+		}
+		tree = compressTrees(trees);
+	}
+	public HuffmanTree(int[] frequencies, byte firstByte, byte last)
+	{
+		nodes = new ArrayList<Node>();
+		byte currentByte = firstByte;
+		for(int i = 0; i < frequencies.length; i++)
+		{
+			ArrayList<Byte> keys = new ArrayList<Byte>();
+			keys.add(currentByte);
+			Node n = new Node(keys);
+			n.frequency = frequencies[i];
+			nodes.add(n);
+			currentByte++;
+		}
+		PriorityQueue<Tree> trees = new PriorityQueue<Tree>();
 		for(int i = 0; i < nodes.size(); i++)
 		{
 			Tree t = new Tree();
@@ -72,7 +94,7 @@ public class HuffmanTree
 		Tree t = new Tree();
 		t.root = n;
 		t.weight = n.frequency;
-		
+		//trees.off
 		trees.add(t);
 		return compressTrees(trees);
 	}
