@@ -13,15 +13,19 @@ public class HuffmanTree
 	private class Tree implements Comparable<Tree>
 	{
 		Node root;
-		double weight;
+		int weight;
 		@Override
 		public int compareTo(Tree o)
 		{
-			return new Double(this.weight).compareTo(o.weight);
+			return new Integer(this.weight).compareTo(o.weight);
 		}
 	}
 	private ArrayList<Node> nodes;
 	private Tree tree;
+	public Node getRoot()
+	{
+		return tree.root;
+	}
 	public HuffmanTree(byte[] b)
 	{
 		nodes = new ArrayList<Node>();

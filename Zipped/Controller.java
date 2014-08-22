@@ -23,7 +23,10 @@ public class Controller
 				257, 143, 149, 180, 174, 132, 151, 193, 347, 91, 119, 135, 182, 124, 152, 109, 175, 152, 159, 166, 224, 126, 169, 145, 220, 119, 148, 133, 
 				158, 144, 185, 139, 168, 244, 145, 167, 167, 262, 214, 293, 402};
 		HuffmanTree tree = new HuffmanTree(frequencies, (byte)-128, (byte)127);
-		tree.printTree();
+		//tree.printTree();
+		TreePrinter printer = new TreePrinter();
+		String treeString = printer.getString(tree.getRoot(), 6);
+		System.out.println(treeString);
 		HuffmanCompression compressor = new HuffmanCompression();
 		
 		int originalLength = 54679;

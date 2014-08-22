@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
-public class Node implements Comparable<Node>
+public class Node implements Comparable<Node>, BinaryNode
 {
 	//public String data;
 	public ArrayList<Byte> keys;
-	public double frequency;
+	public int frequency;
 	public Node left;
 	public Node right;
 	
@@ -32,10 +32,40 @@ public class Node implements Comparable<Node>
         hash = (int) (31 * hash);
         return hash;
     }
+    public String toString()
+    {
+    	String ret = "";
+    	if(keys.size() > 1)
+    	{
+    		ret += "*";
+    	}
+    	else
+    	{
+    		ret+= keys.get(0);
+    	}
+    	
+//    	for(int i = 0; i < keys.size(); i++)
+//    	{
+//    		ret += keys.get(i) + ",";
+//    	}
+    	ret += ("(" + (int)frequency + ")");
+    	return ret;
+    }
+    
 	@Override
 	public int compareTo(Node o)
 	{
-		return new Double(this.frequency).compareTo(o.frequency);
+		return new Integer(this.frequency).compareTo(o.frequency);
+	}
+	@Override
+	public BinaryNode getLeft()
+	{
+		return left;
+	}
+	@Override
+	public BinaryNode getRight()
+	{
+		return right;
 	}
 
 }
