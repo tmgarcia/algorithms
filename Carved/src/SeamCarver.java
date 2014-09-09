@@ -36,15 +36,12 @@ public class SeamCarver
 	private int width;
 	private int height;
 	
-	Graph g;
-	//Pixel pixels[];
 	List<List<Pixel>> pixels;
 	
 	public SeamCarver(Picture pic)
 	{
 		width = pic.width();
 		height = pic.height();
-		//g = new Graph(width*height);
 		pixels  = new ArrayList<List<Pixel>>();
 		setupPixels(pic);
 	}
@@ -64,13 +61,9 @@ public class SeamCarver
 	private double getEnergy(Pixel p, int x, int y)
 	{
 		Pixel leftPixel = pixels.get(((x-1)%width)+(x>0? 0:width)).get(y);
-		//Color leftPixel = pic.get((x-1)%width, y);
 		Pixel rightPixel = pixels.get((x+1)%width).get(y);
-		//Color rightPixel = pic.get((x+1)%width, y);
 		Pixel topPixel = pixels.get(x).get(((y-1)%height)+(y>0? 0:height));
-		//Color topPixel = pic.get(x, (y-1)%height);
 		Pixel bottomPixel = pixels.get(x).get((y+1)%height);
-		//Color bottomPixel = pic.get(x, (y+1)%height);
 		
 		int Rx = leftPixel.color.getRed() - rightPixel.color.getRed();
 		int Ry = topPixel.color.getRed() - bottomPixel.color.getRed();
